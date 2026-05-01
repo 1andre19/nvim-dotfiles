@@ -53,14 +53,19 @@ vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", {desc="move selection down"})
 -- plugins
 vim.pack.add({
    "https://github.com/ibhagwan/fzf-lua", 
+   "https://github.com/nvim-mini/mini.nvim",
+   "https://github.com/lewis6991/gitsigns.nvim",
 })
 
 local function packadd(name)
     vim.cmd("packadd " .. name)
 end
 packadd("fzf-lua")
-require("fzf-lua").setup({})
+packadd("mini.nvim")
+packadd("gitsigns.nvim")
 
+
+require("fzf-lua").setup({})
 vim.keymap.set("n", "<leader>ff", function()
     require("fzf-lua").files()
 end)
@@ -73,3 +78,12 @@ end)
 vim.keymap.set("n", "<leader>gs", function()
     require("fzf-lua").git_status()
 end)
+vim.keymap.set("n", "<leader>gl", function()
+    require("fzf-lua").git_commits()
+end)
+vim.keymap.set("n", "<leader>fx", function()
+    require("fzf-lua").diagnostics_document()
+end)
+
+require("mini.pairs").setup({})
+require("mini.indentscope").setup({})
