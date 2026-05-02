@@ -1,4 +1,4 @@
---comment 
+--comment
 vim.opt.termguicolors = true
 vim.cmd.colorscheme("retrobox")
 
@@ -6,9 +6,8 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
 vim.opt.wrap = false
-vim.opt.scrolloff = 10 
+vim.opt.scrolloff = 10
 vim.opt.sidescrolloff = 8
-vim.opt.spelllang = { "en", "es" }
 
 -- tabs & indent
 vim.opt.tabstop = 4
@@ -24,66 +23,30 @@ vim.opt.smartcase = true
 -- vim.opt.showmatch = true
 
 -- stop newline from auto comment
-vim.opt.formatoptions:remove({"c", "r", "o"})
+vim.opt.formatoptions:remove({ "c", "r", "o" })
 vim.api.nvim_create_autocmd("Filetype", {
-    pattern = {"*"},
-    callback = function()
-        vim.opt.formatoptions:remove({"c", "r", "o"})
-    end,
-    desc = "don't continue comments when entering new line",
+	pattern = { "*" },
+	callback = function()
+		vim.opt.formatoptions:remove({ "c", "r", "o" })
+	end,
+	desc = "don't continue comments when entering new line",
 })
-
 
 -- use system clipboard
 vim.opt.clipboard:append("unnamedplus")
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-vim.keymap.set("n", "<leader>bn", ":bnext<CR>", {desc="next buffer"})
-vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", {desc="prev buffer"})
+vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "next buffer" })
+vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "prev buffer" })
+vim.keymap.set("n", "<leader>bd", ":bdelete<CR>", { desc = "delete buffer" })
 
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
-vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", {desc="move line up"})
-vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", {desc="move line down"})
-vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", {desc="move selection up"})
-vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", {desc="move selection down"})
+vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", { desc = "move line up" })
+vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", { desc = "move line down" })
+vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "move selection up" })
+vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "move selection down" })
 
--- plugins
-vim.pack.add({
-   "https://github.com/ibhagwan/fzf-lua", 
-   "https://github.com/nvim-mini/mini.nvim",
-   "https://github.com/lewis6991/gitsigns.nvim",
-})
-
-local function packadd(name)
-    vim.cmd("packadd " .. name)
-end
-packadd("fzf-lua")
-packadd("mini.nvim")
-packadd("gitsigns.nvim")
-
-
-require("fzf-lua").setup({})
-vim.keymap.set("n", "<leader>ff", function()
-    require("fzf-lua").files()
-end)
-vim.keymap.set("n", "<leader>fg", function()
-    require("fzf-lua").live_grep()
-end)
-vim.keymap.set("n", "<leader>fb", function()
-    require("fzf-lua").buffers()
-end)
-vim.keymap.set("n", "<leader>gs", function()
-    require("fzf-lua").git_status()
-end)
-vim.keymap.set("n", "<leader>gl", function()
-    require("fzf-lua").git_commits()
-end)
-vim.keymap.set("n", "<leader>fx", function()
-    require("fzf-lua").diagnostics_document()
-end)
-
-require("mini.pairs").setup({})
-require("mini.indentscope").setup({})
+require("plugins")
