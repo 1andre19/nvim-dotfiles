@@ -16,7 +16,23 @@ vim.pack.add({
 	{ src = "https://github.com/saghen/blink.cmp" },
 	"https://github.com/saghen/blink.lib",
 	"https://github.com/stevearc/conform.nvim",
+	-- colo
+	-- zenbones dependency
+	"https://github.com/rktjmp/lush.nvim",
+	{
+		src = "https://github.com/zenbones-theme/zenbones.nvim",
+		name = "zenbones",
+	},
+	--"https://github.comavarasu/onedark.nvim",
+	"https://github.com/Mofiqul/vscode.nvim",
 })
+
+--require("zenbones").setup({})
+vim.cmd.colorscheme("neobones")
+--require("onedark").setup({
+--	style = "warmer",
+--})
+--vim.cmd.colorscheme("onedark")
 
 require("fzf-lua").setup({})
 vim.keymap.set("n", "<leader>ff", function()
@@ -40,6 +56,7 @@ end)
 
 require("mini.pairs").setup({})
 require("mini.indentscope").setup({})
+require("mini.tabline").setup({})
 
 -- treesitter
 local setup_treesitter = function()

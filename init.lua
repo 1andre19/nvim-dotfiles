@@ -1,6 +1,6 @@
 --comment
 vim.opt.termguicolors = true
-vim.cmd.colorscheme("retrobox")
+--vim.cmd.colorscheme("retrobox")
 
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -41,6 +41,8 @@ vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "next buffer" })
 vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "prev buffer" })
 vim.keymap.set("n", "<leader>bd", ":bdelete<CR>", { desc = "delete buffer" })
 
+vim.keymap.set("n", "<leader>Ex", ":Ex<CR>")
+
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
@@ -48,5 +50,6 @@ vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", { desc = "move line up" })
 vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", { desc = "move line down" })
 vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "move selection up" })
 vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "move selection down" })
+vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show diagnostic" })
 
 require("plugins")
